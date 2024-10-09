@@ -1,0 +1,39 @@
+{%extends 'main.html'%}
+
+{% block main_content%}
+
+    <title>Notify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        .back-button a{
+            text-decoration: none;
+            color:#454545;  
+            font-size:300%;
+            margin-left:-125%;
+            }
+            
+        .back-button a:visited{
+            color:#454545;
+            }
+        .space{
+            margin-top:-33%;
+        }
+
+    </style>
+    <div class="space"></div>
+
+    <div class="back-button">
+        <a href="{% url 'events' %}">←</a>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div>The hall is currently at full occupancy.</div>
+    <br>
+    <div>You will be notified if a seat becomes empty via an email that will be sent to {{ email }} .</div>
+    <br>
+    <div>Please contact the school for any queries.</div>
+
+{%endblock%}
+

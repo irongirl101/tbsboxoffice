@@ -1,0 +1,55 @@
+<!--Responsive:N Clean:Y Changes:Y-->
+
+{% extends 'main.html'%}
+{% load static %}
+{%block main_content%}
+
+  <link href="styles.css">
+  <title>{{event}}</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="{% static 'styles.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+
+  <div class="space2">
+  </div>
+
+  <div class="back-button">
+    <a href="{% url 'events' %}">←</a>
+  </div>
+
+
+  <div class="stageimg">
+    <img src="https://static.thenounproject.com/png/106427-200.png" width=250 height=250>
+  </div>
+  <div class="move">Best on PC. If on mobile, and unable to see all the seats, please scroll.</div>
+
+  <div class="auditorium-container">
+    <div id="auditorium"></div>
+  </div>
+
+  {% if allbooked %}
+  <button class="submit-button"><a style="color: white;text-decoration:none;" href="/events/notify/{{ pk }}">Notify me</a></button>
+  <br>
+  <br>
+  <div style="margin-left: 85%; ">Notify me if a seat is empty</div>
+  {% else %} 
+  <div id="selected-seats-info" class="selectedseatstext">No Seat Selected</div>
+  <form id="selected-seats-form" method="POST"> 
+    {% csrf_token %}
+    <input type="hidden" name="seats" id="selected-seats-input"> 
+    <input type="submit" class="submit-button" value="Submit">
+  </form>
+  {% endif %}
+
+  <input type="hidden" id="blocked-data" value='{{ blocked|safe }}'> 
+ 
+  <div class="big-space">
+  <script src="{% static 'script.js' %}"></script>
+  {% endblock%}
+
+  {% block logout_button %}
+    {% if request.user.is_authenticated %}
+    <div class="header-right"> 
+        <a class="logout-link" href="{% url 'logout' %}">Logout</a>
+    </div>
+    {% endif %}
+{%endblock%}

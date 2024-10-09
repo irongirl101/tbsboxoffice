@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            font-family: Montserrat, sans-serif;
+        }
+        body {
+            background-image: linear-gradient(45deg, #e0e0e0 25%, transparent 25%, transparent 75%, #e0e0e0 75%, #e0e0e0 75%, #e0e0e0);
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            align-items:center;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .top-heading {
+            background: #090b5c;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index:1000;
+            justify-content: space-between;
+        }
+
+        .top-heading img {
+            max-width: 80%;
+            height: auto;
+            margin-right: 1rem;
+        }
+
+        .main-content {
+            padding: 1rem; 
+        }
+
+        .button{
+            background-color: #090b5c;
+            color: white;
+            padding:0.5%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            transform: scale(1.05); 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+        .header-right {
+            display: flex; 
+            align-items: center;
+        }
+        
+        .logout-link {
+            font-size: 14px;
+            margin-right: 50px;
+            color: white;
+            text-decoration: none;
+            display:flex;
+            font-weight:100;
+        }
+
+        @media screen and (max-width: 768px) {
+            .event-text {
+                width: 100%; /* Adjust width for smaller screens */
+                max-width: 100%; /* Ensure text doesn't overflow */
+                font-size: 14px; /* Adjust font size for smaller screens */
+            }
+        }
+ 
+    </style>
+</head>
+<body>
+    <div class="top-heading">
+        <a href="{% url 'home' %}">
+            <img src="https://www.brigadeschools.edu.in/wp-content/uploads/2022/02/brigade-school-logo-sless.png" alt="brigade-school-logo-sless" width=250 height=50>
+        </a>
+
+        {% block logout_button%}
+        {% endblock%}
+    </div>
+
+    <div class="main-content">
+        {% block main_content %}
+        {% endblock %}
+    </div>
+
+
+</body>
+</html>

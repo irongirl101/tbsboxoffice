@@ -1,0 +1,118 @@
+{% extends 'main.html' %}
+{% block main_content %}
+    <title>Events</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h2 {
+            font-size: 28px;
+            margin-top: 20px;
+            color: #333;
+        }
+        body {
+            align-items: center;
+            text-align: center;
+        }
+        .events-container {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            text-align: center;
+            width: 65%;
+        }
+        .event {
+            display: flex;
+            align-items: center;
+            text-align: left;
+            margin-bottom: 20px;
+            width: 200%;
+        }
+        .event img {
+            width: 70px;
+            height: 70px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+        }
+        .event img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .event-text {
+            margin-left: 20px;
+            flex-grow: 1;
+            width: 100%; /* Adjusted width */
+            max-width: 300px; /* Added max-width */
+            overflow: hidden; /* Added overflow to prevent overflow */
+        }
+        .space {
+            margin-top: 250px;
+        }
+        a {
+            color: #090b5c;
+        }
+        .button {
+            font-size: 100%;
+            max-width: 40%;
+            margin: 0 auto;
+            padding: 2.5%;
+            border-radius: 5px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .event-text {
+                width: 100%; /* Adjust width for smaller screens */
+                max-width: 90%; /* Ensure text doesn't exceed screen width */
+                font-size: 14px; /* Adjust font size for smaller screens */
+                word-wrap: break-word; /* Allow long words to break */
+            }
+        }
+    </style>
+    <div class="space"></div>
+    <h2>Events</h2>
+    {% if reports %}
+    <div class="button">
+        <a style="color:white;width:1;" href="/reports">General report</a>
+    </div>
+    <br>
+    <div class="button">
+        <a style="color:white;width:1;" href="/adminlinks">Admin</a>
+    </div>
+    <br>
+    <div class="button">
+        <a style="color:white;width:1;" href="/deleted">View Deleted Data</a>
+    </div> 
+    {% endif %}
+    {% if Events %}
+    {% for i in Events %}
+    <div class="events-container">
+        <a href={{i.red}} style="text-decoration: none; color:black;">
+            <div class="event">
+                <img src={{i.img}} alt={{i.event}}>
+                <div class="event-text">
+                    <p><strong>{{i.event}}</strong></p>
+                    <p>{{i.Desc}}</p>
+                    <p>{{i.Date}}</p>
+                    {% if reports %}
+                    <a style="width:100px;" href="/events/report/{{i.event}}/">See report</a>
+                    <br>
+                    <br>
+                    <div><a href="/events/reserve/{{i.event}}/">Reserve Seats</a> </div>
+                    <br>
+                    <div><a href="/events/cancelreserve/{{i.event}}/">Cancel Reserved Seats</a></div> 
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+        <hr>
+    </div>
+    {% endfor %}
+    {% else %}
+    No upcoming events.
+    {% endif %}
+{% endblock %}
+{% block logout_button %}
+    {% if request.user.is_authenticated %}
+    <div class="header-right"> 
+        <a class="logout-link" href="{% url 'logout' %}">Logout</a>
+    </div>
+    {% endif %}
+{%endblock%}    

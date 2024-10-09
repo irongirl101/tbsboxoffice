@@ -1,0 +1,60 @@
+<!--Responsive:Y Clean:Y Changes:M-->
+
+{% extends 'main.html' %}
+{% block main_content %}
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Details</title>
+    <style>
+        .space{
+            margin:10%;
+        }
+
+        div{
+            font-size:110%;
+            font-weight:600;
+        }
+        table,th,td{
+            border:1px solid black;
+        }
+    </style>
+    <table>
+        <tr>
+            <th>USN: </th>
+            <td>{{USN}}</td>
+            
+        </tr>
+        <tr>
+            <th>Seats: </th>
+            <td>{{seats}}</td>
+            
+        </tr>
+        <tr>
+            <th>Event: </th>
+            <td>{{event}}</td>
+        </tr>
+        <tr>
+            <th>Booked via group: </th>
+            <td>{{group}}</td>
+        </tr>
+        <tr>
+            <th>Family: </th>
+            <td>{{family}}</td>
+        </tr>
+        <tr>
+            <th>Booked on: </th>
+            <td>{{whenbooked}}</td>
+        </tr>
+        <tr>
+            <th>Linkage made on: </th>
+            <td>{{whenmade}}</td>
+        </tr>
+        <tr>
+            <th>Email sent on: </th>
+            <td>{{emailsent}}</td>
+        </tr>
+        <tr>
+            <th>Other details: </th>
+            <td>{{details}}</td>
+        </tr>
+    </table>
+    {% endblock %}

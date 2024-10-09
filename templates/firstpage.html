@@ -1,0 +1,89 @@
+<!--Responsive:Y Clean:Y Changes:M-->
+
+{% extends 'main.html' %}
+
+{% block main_content %}
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>TBS Box Office</title>
+    <style>
+        .button-container {
+            text-align: center; 
+        }
+        .button {
+            display: inline-block;
+            justify-content: flex-end; 
+            align-items: center; 
+            margin-right: 1rem;
+            max-width: 20%;
+            font-size: 125%;
+            padding: 10px 20px;
+        }
+        .main {
+            font-size: 400%;
+            color: #000;
+            font-weight: 500;
+        }
+
+        .space {
+            margin-top: 20%;
+        }
+        
+        .space2 {
+            padding: 1.5%;
+        }
+        
+        a:visited {
+            color: white;
+            background-color: transparent;
+            text-decoration: none;
+         }
+
+         a{
+            color:white;
+         }
+
+         .thanks{
+            position:relative;
+            text-align:right;
+            right:125%;
+            margin-top:20%;
+            font-size:90%; 
+         }
+         .small{
+            font-size: 100%;
+         }
+
+    </style>
+
+    <div class="space"></div>
+    <div class="main">
+        TBS Box Office
+    </div>
+    <div>
+        Changing the way booking is done at the MLR Convention Center.
+    </div>
+    <hr>
+    <div class="space2"></div>
+    <div>
+        Done by Aditi Vignesh and Suraj Acharya.
+    </div>
+    <br>
+    <div class="space2"></div>
+
+    <div class="button-container">
+        <div class="button">
+            <a href="{% url 'home' %}">
+                Login
+            </a>
+        </div>
+    </div>
+    <br>
+    <div class="small">Please use a laptop or desktop for a better experience.</div>
+ 
+    <!--
+    <p class="thanks">
+        Special Thanks to:  for one after the other, add <br
+
+    </p>
+    -->
+{% endblock %}

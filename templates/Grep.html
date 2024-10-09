@@ -1,0 +1,86 @@
+<!--Report-->
+<!--Responsive:Y Clean:Y Changes:N-->
+
+{%extends 'main.html'%}
+
+{% block main_content%}
+    <title>Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <div class="back-button">
+        <a href="{% url 'events' %}">←</a>
+    </div>
+    <style>
+        body{
+            background-color:#e0e0e0;
+            text-align: inherit;
+        }
+        table,th,td{
+            border:1px solid black;
+        }
+
+        div{
+            font-size:100%;
+        }
+        .back-button{
+            position:relative ;
+            text-align: left;
+            font-size: 2.5em;
+            margin-left:-50%;
+        }
+        .back-button a{
+            text-decoration: none;
+            color:#454545;  
+        }
+          
+        .back-button a:visited{
+            color:#454545;
+        }
+    </style>
+ 
+    <div><strong> General Report: </strong></div>
+    <div>This data is across all the events.</div>
+    <br>
+
+    <table>
+        <tr>
+            <th>Date and time (as of last update): </th>
+            <td>{{whenupdated}}</td>
+        </tr>
+        <tr>
+            <th>Logins : </th>
+            <td>{{logins}}</td>
+        </tr>
+ 
+        <tr>
+            <th>Logouts : </th>
+            <td>{{logouts}}<td>
+        </tr>
+
+        <tr>
+            <th>QR scans: </td>
+            <td>{{QRscanned}}</td>
+        </tr>
+        <tr>
+            <th>Emails sent : </th>
+            <td>{{emailsent}}</td>
+        </tr>
+
+        <tr>
+            <th> Seats booked : </th>
+            <td>{{Seatsbooked}}</td>
+        </tr>
+
+        <tr>
+            <th> Seats cancelled : </th>
+            <td>{{Seatscancelled}}</td>
+        </tr>
+        <tr>
+            <th> People waiting for seats: </th>
+            <td>{{nowaiting}}</td>
+        </tr>
+        <tr>
+            <th> Siblings that couldn't book: </th>
+            <td>{{nosiblings}}</td>
+        </tr>
+    <table>
+{%endblock%}

@@ -1,0 +1,109 @@
+{% extends 'main.html' %}
+{% block main_content %}
+
+<title>Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    text-align: left;
+    align-items: left;
+    justify-content: left;
+  }
+
+  button {
+    background-color: #090b5c;
+    color: white;
+    padding: 0.5%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 125%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 3%;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+  
+  }
+
+  button:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  }
+  .space {
+    margin-top: 10rem;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .bigfont {
+    font-size: 250%;
+    width: 150%;
+  }
+
+  table {
+    border-spacing: 10px 10px;
+    width: 100%; 
+  }
+
+  .add {
+    font-size: 125%;
+    width:125%;
+  }
+</style>
+
+<div class="space"></div>
+
+<body>
+  <table>
+    <tr>
+      <td colspan="3" style="font-size: 200%;"><strong>ADMIN</strong></td>
+    </tr>
+    <tr>
+      <td><button class="bigfont"><a href="http://127.0.0.1:8000/admin">Admin</a></button></td>
+    </tr>
+    <tr>
+      <td colspan="3">Redirects to the main Admin Page</td>
+    </tr>
+    <tr></tr>
+    <tr></tr>
+    <tr>
+      <td><button><a href="http://127.0.0.1:8000/admin/homepage/events/">Events</a></button></td>
+      <td>All Events happening in the MLR</td>
+      <td><button class="add" ><a href="http://127.0.0.1:8000/admin/homepage/events/add/">Add</a></button></td>
+    </tr>
+    <tr>
+      <td><button><a href="http://127.0.0.1:8000/admin/homepage/groupeventlink/">Group Events</a></button></td>
+      <td>Link the Events to certain Groups</td>
+      <td><button class="add"><a href="http://127.0.0.1:8000/admin/homepage/groupeventlink/add/">Add </a></button></td>
+    </tr>
+    <tr>
+      <td><button><a href="http://127.0.0.1:8000/admin/auth/user/">Users</a></button></td>
+      <td>All the Users and other details</td>
+      <td><button class="add"><a href="http://127.0.0.1:8000/admin/auth/user/add/">Add</a></button></td>
+    </tr>
+    <tr>
+      <td><button><a href="http://127.0.0.1:8000/admin/auth/group/">Groups</a></button></td>
+      <td>All the Groups</td>
+    </tr>
+    
+    <tr>
+      <td><button><a href="http://127.0.0.1:8000/admin/homepage/general/">General</a></button></td>
+      <td>General Details across all events</td>
+    </tr>
+    <tr>
+      <td><button><a href="http://127.0.0.1:8000/admin/homepage/family/">Families</a></button></td>
+      <td>All Families</td>
+    </tr>
+    <tr>
+      <td><button><a href="http://127.0.0.1:8000/admin/homepage/linkage/">Linkages</a></button></td>
+      <td>Linkages to each USN</td>
+    </tr>
+  </table>
+</body>
+
+{% endblock %}

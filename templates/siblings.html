@@ -1,0 +1,38 @@
+{%extends 'main.html'%}
+
+{% block main_content%}
+
+    <title>Alert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        .back-button a{
+            text-decoration: none;
+            color:#454545;  
+            font-size:300%;
+            margin-left:-125%;
+            }
+            
+        .back-button a:visited{
+            color:#454545;
+            }
+        .space{
+            margin-top:-33%;
+        }
+
+    </style>
+    <div class="space"></div>
+
+    <div class="back-button">
+        <a href="{% url 'home' %}">←</a>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div>You have already booked seats for {{i.event.event}} via your other child: {{i.user.first_name}} {{i.user.last_name}} on {{i.whenbooked}}.</div>
+    <br>
+    <div>Please contact the school for any queries.</div>
+
+{%endblock%}
+

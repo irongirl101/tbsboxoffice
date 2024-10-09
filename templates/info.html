@@ -1,0 +1,157 @@
+<!--Report-->
+<!--Responsive:Y Clean:Y Changes:N-->
+
+{%extends 'main.html'%}
+
+{% block main_content%}
+    <title>Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background-color:#e0e0e0;
+            text-align: inherit;
+            overflow:scroll;
+            
+        }
+        table,th,td{
+            border:1px solid black;
+            height:100%;
+        }
+        .space{
+            margin-top: 10%;
+        }
+        .space2{
+            margin-top:2.5%;
+        }
+        .back-button{
+            position:relative ;
+            text-align: left;
+            font-size: 2.5em;
+            margin-right:-20%;
+        }
+        .back-button a{
+            text-decoration: none;
+            color:#454545;  
+        }
+          
+        .back-button a:visited{
+            color:#454545;
+        }
+
+        table.overall tbody:nth-of-type(1) {
+            counter-reset: counter 0; /* Reset the counter for the first tbody of the "Overall" table */
+        }
+        
+        table.overall tbody tr {
+            counter-increment: counter;
+        }
+        
+        table.overall tbody tr td:first-child:before {
+            content: counter(counter);
+        }
+    </style>
+   <div class="space"/>
+   <div class="back-button">
+    <a href="{% url 'events' %}">←</a>
+   </div>
+
+    <div class="space2"><strong>General: </strong> <div>
+    <table>
+        <tr>
+            <th>Event: </th>
+            <td>{{event}}<td>
+        </tr>
+        <tr>
+            <th>Date and time (as of last update): </th>
+            <td>{{whenupdated}}</td>
+        </tr>
+        <tr>
+            <th>Number of parents that have booked :</th>
+            <td> {{pplsbooked}}</td>
+        </tr>
+        <tr>
+            <th>No of clicked: </th> 
+            <td>{{clicked}}</td>
+        </tr>
+        <tr>
+            <th>Number of QR scans: </th>
+            <td>{{scanned}}</td>
+        </tr>
+        <tr>
+            <th>Number of seats blocked: </th>
+            <td>{{blocked}}</td>
+        </tr>
+        <tr>
+            <th>No of cancellations: </th>
+            <td>{{cancelled}}</td>
+        </tr>
+        <tr>
+            <th>Number of people waiting for seats: </th>
+            <td>{{nowaiting}}</td>
+        </tr>
+        <tr>
+            <th>Number of siblings that couldn't book: </th>
+            <td>{{nosiblings}}</td>
+        </tr>
+    <br>
+    </table>
+    <br>
+    <div><strong>Booking Log: </strong> <div>
+    <br>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>No of Bookings</th>
+        </tr>
+
+    {% if dates %}
+        {% for i in dates %}
+        <tr> <!-- Add a new row for each date -->
+            {% for j in i %}
+            <td>{{ j }}</td>
+            {% endfor %}
+            <th>&nbsp;</th>
+        </tr>
+        {% endfor %}
+    {% endif %}
+    </table>
+    <br>
+
+    <strong>Overall:</strong>
+    <table class="overall">
+        <thead>
+            <tr>
+                <th>Sl No.</th>
+                <th>USN:</th>
+                <th>Seats:</th>
+                <th>Booked via group:</th>
+                <th>Family:</th>
+                <th>Booked on:</th>
+                <th>Linkage made on:</th>
+                <th>Email sent on:</th>
+                <th>QR Scanned on:</th>
+                <th>Other details:</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if deets %}
+                {% for i in deets %}
+                    <tr>
+                        <td></td>
+                        <td>{{ i.USN }}</td>
+                        <td>{{ i.seats }}</td>
+                        <td>{{ i.group }}</td>
+                        <td>{{ i.family }}</td>
+                        <td>{{ i.whenbooked }}</td>
+                        <td>{{ i.whenmade }}</td>
+                        <td>{{ i.emailsent }}</td>
+                        <td>{{ i.scan }}</td>
+                        <td>{{ i.details }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+    
+         
+{%endblock%}

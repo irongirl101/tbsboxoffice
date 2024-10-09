@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+{% block main_content %}
+<title>Deleted Data</title>
+<style>
+    table,tr,td{
+        border:1px solid black;
+        height:100%;
+    }
+</style>
+    <div style="margin-top:10%;font-weight:700;">Previously Deleted Data</div>
+    <table style="margin-left:5%;margin-top:5%;">
+    {% if deleted %}
+            {% for i in deleted %}
+            <tr style="font-weight:600;">
+                {% for j in i %}  
+                        <td>{{j}} </td>
+                {% endfor %} 
+            <tr>   
+            {% endfor %}
+    {% endif %}
+    </table>
+{% endblock %}

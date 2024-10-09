@@ -1,0 +1,91 @@
+<!--add some color via pictures-->
+
+{% extends 'main.html' %}
+
+{% block main_content %}
+    <title>Your Ticket</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <style>
+        .container {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            background-color: #fff;
+            padding: 1rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom:4rem;
+            height:150%;
+            width:52%;
+            margin-left:21%;
+        }
+
+        .space {
+            margin-top: 1rem;
+        }
+
+        .space2 {
+            margin-top: 2rem;
+        }
+
+        div {
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .ticket-details {
+            margin-top: 1rem;
+        }
+
+        .ticket-details p {
+            margin: 0.5rem 0;
+        }
+
+        .cancel-link {
+            color: #e74c3c;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .cancel-link:hover {
+            text-decoration: underline;
+        }
+        .event-name {
+            font-weight: 600;
+        }
+
+        .emphasis {
+            font-weight: 700;
+        }
+    </style>
+
+    <div class="space2"></div>
+    <div class="container">
+        <img src="data:image/png;base64,{{ QR }}" alt="QR Code" width="150" height="150">
+        <div class="event-name">{{ Event }}</div>
+        <div class="ticket-details">
+            <p>Timing: {{ EventDeets }}</p>
+            <p class="emphasis">Your Seats: {{ seats }}</p><!--not needed comma coming after seats. minor issue.-->
+            <p>Timing booked: {{ bookedwhen }}</p>
+            <p>Details: {{ desc }}</p>
+        </div>
+        <!--<div class="space"></div>-->
+    </div>
+    <div class="space"> Please take a screenshot of the ticket. </div>
+    <div>Show the ticket to the gate admin at entrance.</div> 
+    <div class="space"></div>
+    <a href="/events/cancel/{{ pk }}" class="cancel-link" onclick="return confirm('Are you sure you want to cancel?')">Cancel seats</a>
+    <div><a class="resend-link" href="/events/resend/{{ pk }}">Resend email to {{email}}</a></div>
+{% endblock %}
+
+{% block logout_button %}
+{% if request.user.is_authenticated %}
+<div class="header-right">
+    <a class="logout-link" href="{% url 'logout' %}">Logout</a>
+</div>
+{% endif %}
+{% endblock %}

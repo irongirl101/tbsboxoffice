@@ -1,0 +1,87 @@
+{% extends 'main.html'%}
+{% load static %}
+{%block main_content%}
+
+  <link rel="stylesheet" href="styles.css">
+  <title>{{event}}</title>  
+  <link rel="stylesheet" type="text/css" media="screen" href="{% static 'styles.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <style>
+    .line { 
+      overflow-x: auto;
+      max-width:100%;
+      text-align:left;
+      border-right:5px;
+    }
+    
+    .content{
+      display:inline-block;
+      padding:5px;
+    }
+
+    .seat{
+      background-color: #383838;
+      color:#ffff;
+    }
+
+    .booked{
+      background-color: #ddd;
+      color:#000000;
+    }
+
+    .scanned{
+      background-color: crimson;
+      color:#000000;
+    }
+
+    .reserved{
+      background-color:#FEC260;
+      color:#000000;
+    }
+    
+    .legend{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:-80px;
+    }
+  </style>
+
+  <div class="space2">
+  </div>
+
+  <div class="back-button">
+    <a href="{% url 'events' %}">←</a>
+  </div>
+
+
+  <div class="stageimg">
+    <img src="https://static.thenounproject.com/png/106427-200.png" width=250 height=250>
+  </div>
+
+  <div class="auditorium-container">
+    <div id="auditorium"></div>
+  </div>
+
+  <hr>
+
+  <div id="selected-seats-info" class="line">
+    <div id="selected-seats-text" class="content">No Seat Selected</div>
+  </div>
+
+  <form id="selected-seats-form" method="POST"> 
+    {% csrf_token %}
+    <input type="hidden" name="seats" id="selected-seats-input"> 
+    <input type="submit" class="submit-button" value="Submit">
+  </form>
+  <input type="hidden" id="blocked-data" value='{{ blocked|safe }}'> 
+  <script src="{% static 'canceladminaudi.js' %}"></script>
+  {% endblock%}
+
+  {% block logout_button %}
+    {% if request.user.is_authenticated %}
+    <div class="header-right"> 
+        <a class="logout-link" href="{% url 'logout' %}">Logout</a>
+    </div>
+    {% endif %}
+{%endblock%}
